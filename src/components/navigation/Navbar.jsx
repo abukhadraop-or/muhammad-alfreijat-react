@@ -20,10 +20,14 @@ const Nav = styled.div`
   height: 4rem;
   justify-content: space-between;
   padding: 0 1.25rem;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
 
   @media (min-width: 1024px) {
     justify-content: space-around;
     gap: 4%;
+    position: static;
   }
 `;
 
@@ -108,7 +112,7 @@ const LanguageButton = styled.div`
   font-weight: 600;
   justify-content: center;
   height: 1.625rem;
-  padding: 3px 5px;
+  padding: 0.1875rem 0.3125rem;
   transition: linear 0.1s;
   width: 1.75rem;
   &:hover {
@@ -116,7 +120,10 @@ const LanguageButton = styled.div`
     color: #032541;
   }
 `;
-
+/**
+ * Renders the Navbar component with the website's navigation and menu.
+ *
+ */
 function Navbar() {
   const { sidebar, setSidebar } = useDisplaySideBar();
   const [showSubLists, setShowSubLists] = useState([

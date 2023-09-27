@@ -5,40 +5,43 @@ import useMovies from "hooks/useMovies";
 import useFetchMovies from "hooks/useFetchMovies";
 
 const Search = styled.button`
-  width: 260px;
-  height: 44px;
-  display: inline-flex;
-  font-weight: 600;
-  justify-content: center;
-  color: #fff;
   align-items: center;
-  border-radius: 40px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  line-height: 1;
-  border: 0;
   background-color: #01b4e4;
+  border-radius: 2.5rem;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 1.2rem;
+  font-weight: 600;
+  height: 2.75rem;
+  justify-content: center;
+  line-height: 1;
+  width: 16.25rem;
   &:hover {
     background-color: #032541;
   }
   &:disabled {
     background-color: #ececec;
-    color: #767676;
     cursor: default;
+    color: #767676;
   }
   @media (max-width: 1024px) {
     width: 100%;
   }
 `;
 
+/**
+ * SubmitButton component provides a button to trigger the search for movies based on applied filters.
+ *
+ */
 function SubmitButton() {
   const { filter } = useFilter();
-  const { moviesList, setMoviesList } = useMovies();
+  const { setMoviesList } = useMovies();
 
   const searchMovies = async () => {
     const response = await useFetchMovies(filter);
     setMoviesList(response.results);
-    console.log(moviesList);
   };
   return (
     <Search

@@ -1,9 +1,9 @@
 /* eslint-disable no-undef */
 import { render } from "@testing-library/react";
-import App from "App";
+import Footer from "components/navigation/Footer";
 
-describe("App component", () => {
+describe("Footer component", () => {
   it("should render without errors", () => {
-    render(<App />);
+    render(<Footer />);
   });
 });

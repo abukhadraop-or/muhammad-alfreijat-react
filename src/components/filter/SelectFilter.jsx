@@ -5,23 +5,34 @@ import useFilter from "hooks/useFilters";
 import selectFilter from "hooks/selectFilter";
 
 const H3 = styled.h3`
-  display: inline-flex;
   align-items: center;
-  width: 100%;
+  display: inline-flex;
   font-size: 1em;
   font-weight: 300;
-  margin-bottom: 10px;
-  box-sizing: border-box;
+  margin-bottom: 0.625rem;
+  width: 100%;
 `;
 
 const Select = styled.select`
-  font-size: 0.9em;
-  width: 100%;
   background-color: #ced3db;
-  padding: 0.375rem 0.75rem;
-  border: 0;
   border-radius: 0.25rem;
+  border: 0;
+  font-size: 0.9em;
+  padding: 0.375rem 0.75rem;
+  width: 100%;
 `;
+
+/**
+ * SelectFilter component allows users to filter items by selecting from a list of options.
+ *
+ * @param {string} title - The title of the filter.
+ * @param {Array} options - An array of filter options, each with an id, option name, and value.
+ * @param {string} changedFilter - The identifier for the changed filter.
+ * @param {string} optionsId - The key in the options object for the id.
+ * @param {string} optionsName - The key in the options object for the option name.
+ * @param {string} OptionsValue - The key in the options object for the option value.
+ */
+
 function SelectFilter({
   title,
   options,

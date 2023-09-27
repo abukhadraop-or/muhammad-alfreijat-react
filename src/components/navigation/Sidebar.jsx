@@ -4,20 +4,20 @@ import PropTypes from "prop-types";
 import useDisplaySideBar from "hooks/useDisplaySidebar";
 
 const SideBar = styled.ul`
-  background-color: rgba(3, 37, 65, 0.9);
+  background-color: rgba(3, 37, 65, 0.97);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 0.3125rem;
   height: 100%;
   left: ${(props) => (props.sidebar ? "0%" : "-90%")};
   list-style-type: none;
   padding: 1.25rem;
-  position: absolute;
+  position: fixed;
   top: 3rem;
   transition: left 0.3s ease;
   width: 90%;
-
+  z-index: 999;
   @media (min-width: 1024px) {
     display: none;
   }
@@ -37,7 +37,14 @@ ListItem.defaultProps = {
   size: "1.25rem",
   paddingBottom: "0.625rem",
 };
-
+/**
+ * Renders a sidebar component with a list of navigation items that only appears when screen width is bellow 1024px.
+ *
+ * @component
+ * @param {Object} props - The component's props.
+ * @param {Array} props.listItems - An array of objects with navigation item data.
+ * @param {Array} props.subList - An array of objects with sub-navigation item data.
+ */
 export default function Sidebar({ listItems, subList }) {
   const { sidebar } = useDisplaySideBar();
 

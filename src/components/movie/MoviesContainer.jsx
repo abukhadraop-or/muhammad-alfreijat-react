@@ -3,6 +3,10 @@ import styled from "@emotion/styled";
 import FiltersContainer from "components/filter/FiltersContainer";
 import Movies from "components/movie/Movies";
 
+/**
+ * MoviesContainer component displays FiltersContainer and Movies components side by side .
+ *
+ */
 const Container = styled.div`
   display: flex;
   justify-content: center;

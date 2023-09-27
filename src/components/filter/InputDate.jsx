@@ -1,7 +1,4 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
 import styled from "@emotion/styled";
 import selectFilter from "hooks/selectFilter";
 import useFilter from "hooks/useFilters";
@@ -12,26 +9,28 @@ const Div = styled.div`
   margin: 0.625rem auto;
 
   .date_picker {
-    height: 30px;
+    height: 1.875rem;
     width: 100%;
   }
 `;
 
 const Label = styled.label`
-display: inline;
-width: 3.1875rem;
-margin: 0.5875rem 1.25rem; 0 0;
-padding: 0;
-color: #a4a4a4;
-position: relative;
-cursor: pointer;
-font-size: 0.9rem;
-
+  color: #a4a4a4;
+  cursor: pointer;
+  display: inline;
+  font-size: 0.9rem;
+  margin: 0.5875rem 1.25rem 0 0;
+  position: relative;
+  width: 3.1875rem;
 `;
 
 const DateContainer = styled.div`
   width: 100%;
 `;
+/**
+ * A component that set the date filter.
+ *
+ */
 function InputDate() {
   const [gteDate, setGteDate] = useState(new Date());
   const [lteDate, setLteDate] = useState("");

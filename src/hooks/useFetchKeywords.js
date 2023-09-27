@@ -1,3 +1,10 @@
+/**
+ * A custom hook to fetch keywords from The Movie Database (TMDb) API based on a search query.
+ *
+ * @param {string} keyword - The search query for keywords.
+ * @returns {Promise<Array>} A Promise that resolves to an array of keyword objects.
+ */
+
 const options = {
   method: "GET",
   headers: {

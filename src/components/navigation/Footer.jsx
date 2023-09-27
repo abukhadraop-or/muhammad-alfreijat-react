@@ -4,20 +4,20 @@ import logo from "assets/logo.svg";
 import { footerHeaders, footerElements } from "data/navigationInfo";
 
 const FooterWrapper = styled.div`
-  max-width: 100%;
-  width: 100vw;
-  box-sizing: border-box;
+  align-content: center;
+  align-items: center;
   background-image: radial-gradient(
     at 30%top,
     #031d33 0%,
     rgba(3, 37, 65, 1) 70%
   );
-  padding: 0;
+  box-sizing: border-box;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  align-items: center;
-  align-content: center;
+  justify-content: center;
+  max-width: 100%;
+  padding: 0;
+  width: 100vw;
 
   @media (max-width: 1024px) {
     position: static;
@@ -25,14 +25,14 @@ const FooterWrapper = styled.div`
 `;
 
 const Nav = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  box-sizing: border-box;
   color: #fff;
+  display: flex;
   flex-wrap: wrap;
   font-size: 0.9em;
-  box-sizing: border-box;
+  justify-content: space-between;
+  padding-bottom: 5rem;
+  padding-top: 5rem;
 
   @media (max-width: 1024px) {
     justify-content: center;
@@ -41,24 +41,24 @@ const Nav = styled.div`
 `;
 
 const LogoContainer = styled.div`
-  text-align: right;
-  position: relative;
-  top: -2.25rem;
-  right: 0;
+  box-sizing: border-box;
   margin-right: 2.5rem;
   min-width: 0;
-  box-sizing: border-box;
+  position: relative;
+  right: 0;
+  text-align: right;
+  top: -2.25rem;
 `;
 
 const Logo = styled.img`
-  position: absolute;
-  top: 0;
-  right: 0;
   box-sizing: border-box;
-  outline: 0;
-  width: 8.125rem;
   height: 5.875rem;
+  outline: 0;
   overflow: clip;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 8.125rem;
 
   @media (max-width: 1024px) {
     display: none;
@@ -66,21 +66,21 @@ const Logo = styled.img`
 `;
 
 const Join = styled.a`
-  position: relative;
-  top: 8.75rem;
-  border-color: #fff;
   background-color: #fff;
-  color: #01b4e4;
-  font-size: 1.3em;
-  display: inline-block;
-  word-wrap: break-word;
-  white-space: normal;
-  font-weight: 700;
-  text-transform: uppercase;
-  border: 2px solid #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
+  border-color: #fff;
+  border-radius: 0.3125rem;
+  border: 0.125rem solid #fff;
   box-sizing: border-box;
+  color: #01b4e4;
+  display: inline-block;
+  font-size: 1.3em;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  position: relative;
+  text-transform: uppercase;
+  top: 8.75rem;
+  white-space: normal;
+  word-wrap: break-word;
 
   @media (max-width: 1024px) {
     position: static;
@@ -88,41 +88,44 @@ const Join = styled.a`
 `;
 
 const Category = styled.div`
-  margin-right: 2.5rem;
   box-sizing: border-box;
+  margin-right: 2.5rem;
 `;
 
 const H3 = styled.h3`
-  font-size: 1.4em;
-  line-height: 1.4em;
-  color: #fff;
-  white-space: nowrap;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin: 0 0 0.25rem;
   box-sizing: border-box;
+  color: #fff;
+  font-size: 1.4em;
+  font-weight: 700;
+  line-height: 1.4em;
+  margin: 0 0 0.25rem;
   padding: 0;
+  text-transform: uppercase;
+  white-space: nowrap;
 `;
 
 const Ul = styled.ul`
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
   box-sizing: border-box;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 `;
 
 const Li = styled.li`
-  line-height: 1.6em;
-  max-width: 16.25rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   box-sizing: border-box;
-  margin: 0;
   cursor: pointer;
+  line-height: 1.6em;
+  margin: 0;
+  max-width: 16.25rem;
+  overflow: hidden;
   padding: 0.25rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
-
+/**
+ * Renders list that has links in the footer.
+ *
+ */
 const renderList = (header, elements) => (
   <Category>
     <H3>{header}</H3>
@@ -134,6 +137,10 @@ const renderList = (header, elements) => (
   </Category>
 );
 
+/**
+ * Renders the Footer component with community information and links.
+ *
+ */
 function Footer() {
   return (
     <FooterWrapper>

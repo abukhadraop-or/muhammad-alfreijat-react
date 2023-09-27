@@ -5,13 +5,13 @@ import selectFilter from "hooks/selectFilter";
 import useFilter from "hooks/useFilters";
 
 const H3 = styled.h3`
-  display: inline-flex;
   align-items: center;
-  width: 100%;
+  box-sizing: border-box;
+  display: inline-flex;
   font-size: 1em;
   font-weight: 300;
   margin-bottom: 0.625rem;
-  box-sizing: border-box;
+  width: 100%;
 `;
 
 const GenresContainer = styled.div`
@@ -21,20 +21,23 @@ const GenresContainer = styled.div`
 `;
 
 const Genre = styled.div`
-  display: inline-flex;
-  border: 1px solid #9e9e9e;
   border-radius: 0.875rem;
+  border: 1px solid #9e9e9e;
+  cursor: pointer;
+  display: inline-flex;
   font-size: 0.9em;
   padding: 0.25rem 0.75rem;
-  cursor: pointer;
 
   &:hover {
     background-color: rgba(1, 180, 228, 1);
-    color: #fff;
     border-color: rgba(1, 180, 228, 1);
+    color: #fff;
   }
 `;
-
+/**
+ * GenresInput component allows users to filter items by genres.
+ * @component
+ */
 function GenresInput() {
   const { filter, setFilter } = useFilter();
   const filterOptions = genres.map((option) => option.id);
@@ -43,7 +46,10 @@ function GenresInput() {
     () => false,
   );
   const [checkedOptions, setCheckedOptions] = useState(initialCheckedOptions);
-
+  /**
+   * Handle the user's selection of genres.
+   * @param {number} index - The index of the selected genre.
+   */
   const checkInput = (index) => {
     const updatedCheckedOptions = [...checkedOptions];
     updatedCheckedOptions[index] = !updatedCheckedOptions[index];
@@ -57,8 +63,12 @@ function GenresInput() {
   }, [checkedOptions]);
   return (
     <>
+      {/* Display the component title */}
+
       <H3>Genres</H3>
       <GenresContainer>
+        {/* Display each genre as a clickable option */}
+
         {genres.map((item, index) => (
           <Genre
             style={{

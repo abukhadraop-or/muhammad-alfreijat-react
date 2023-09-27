@@ -7,31 +7,23 @@ import selectFilter from "hooks/selectFilter";
 const Container = styled.label`
   display: inline-flex;
   width: 100%;
-  box-sizing: border-box;
 `;
 const Input = styled.input`
-  padding: 0;
-  box-sizing: border-box;
+  cursor: pointer;
   min-width: 1rem;
-  border-radius: 0.25rem;
-  width: 1rem;
-  height: 1rem;
-  line-height: initial;
-  border-width: 0.0625rem;
-  border-style: solid;
-  outline: 0;
-  display: inline-block;
-  vertical-align: middle;
-  webkit-appearance: none;
 `;
 const Label = styled.label`
-  display: inline;
-  margin: 0.1875rem 0.25rem; 0 0;
-  padding: 0;
-  position: relative;
   cursor: pointer;
+  display: inline;
   font-size: 1rem;
+  margin: 0.1875rem 0.25rem; 0 0;
 `;
+/**
+ * Component for filtering options with checkboxes.
+ * @param {Object} props - The component's props.
+ * @param {Array} props.options - An array of options to display.
+ * @param {string} props.chosenFilter - The chosen filter name.
+ */
 
 function FilterOptionsInput({ options, chosenFilter }) {
   const { filter, setFilter } = useFilter();
@@ -43,6 +35,10 @@ function FilterOptionsInput({ options, chosenFilter }) {
   );
 
   const [checkedOptions, setCheckedOptions] = useState(initialCheckedOptions);
+  /**
+   * Handle checkbox input change.
+   * @param {number} index - The index of the checkbox.
+   */
   const checkInput = (index) => {
     const updatedCheckedOptions = [...checkedOptions];
     updatedCheckedOptions[index] = !updatedCheckedOptions[index];

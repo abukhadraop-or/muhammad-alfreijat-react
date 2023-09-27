@@ -20,12 +20,18 @@ import {
 const FilterContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
 `;
 
+/**
+ * A component that displays a filter container with various filter options.
+ *
+ */
 export default function FiltersContainer() {
   return (
     <FilterContainer>
+      {/* Sort Panel */}
+
       <FilterPanel title="Sort" chosenPanel="sort">
         <PanelContent chosenPanel="sort">
           <SelectFilter
@@ -39,6 +45,8 @@ export default function FiltersContainer() {
         </PanelContent>
       </FilterPanel>
 
+      {/* Where To Watch Panel */}
+
       <FilterPanel title="Where To Watch" chosenPanel="watch">
         <PanelContent chosenPanel="watch">
           <SelectFilter
@@ -51,7 +59,11 @@ export default function FiltersContainer() {
           />
         </PanelContent>
       </FilterPanel>
+      {/* Filters Panel */}
+
       <FilterPanel title="Filters" chosenPanel="filter">
+        {/* Availabilities Filter */}
+
         <PanelContent chosenPanel="filter">
           <InputSelectFilterWrapper
             filterText="Availabilities"
@@ -64,6 +76,8 @@ export default function FiltersContainer() {
             />
           </InputSelectFilterWrapper>
         </PanelContent>
+        {/* Release Dates Filter */}
+
         <PanelContent chosenPanel="filter">
           <InputSelectFilterWrapper
             filterText="Release Dates"
@@ -94,6 +108,7 @@ export default function FiltersContainer() {
             </>
           </InputSelectFilterWrapper>
         </PanelContent>
+        {/* Languages Filter */}
 
         <PanelContent chosenPanel="filter">
           <SelectFilter
@@ -105,16 +120,24 @@ export default function FiltersContainer() {
             OptionsValue="iso_639_1"
           />
         </PanelContent>
+        {/* Date Filter */}
+
         <PanelContent chosenPanel="filter">
           <InputDate />
         </PanelContent>
+        {/* Genres Filter */}
+
         <PanelContent chosenPanel="filter">
           <GenresInput />
         </PanelContent>
+        {/* Keywords Filter */}
+
         <PanelContent chosenPanel="filter">
           <InputKeywords />
         </PanelContent>
       </FilterPanel>
+      {/* Submit Button */}
+
       <SubmitButton />
     </FilterContainer>
   );

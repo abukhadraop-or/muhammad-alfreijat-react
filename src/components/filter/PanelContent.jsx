@@ -4,16 +4,21 @@ import useOpenPanel from "hooks/useOpenPanel";
 import PropTypes from "prop-types";
 
 const PanalContent = styled.div`
-  box-sizing: border-box;
-  border-top: 1px solid #eee;
-  padding: 0 16px 16px;
+  border-top: 0.0625rem solid #eee;
   display: ${(props) => (props.open ? "block" : "none")};
+  padding: 0 1rem 1rem;
   width: 260px;
   @media (max-width: 1024px) {
-    width: 100%;
     margin-top: 0;
+    width: 100%;
   }
 `;
+/**
+ * PanelContent component provides a container for displaying filter panel content.
+ *
+ * @param {string} chosenPanel - The identifier of the chosen filter panel.
+ * @param {JSX.Element} children - The child elements to display within the panel content.
+ */
 function PanelContent({ chosenPanel, children }) {
   const { panel } = useOpenPanel();
 

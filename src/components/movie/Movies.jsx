@@ -11,37 +11,43 @@ const MoviesContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
-  box-sizing: border-box;
-
   @media (max-width: 1200px) {
     justify-content: center;
   }
 `;
 
 const LoadButton = styled.button`
-  width: 100%;
-  height: 3.125rem;
-  display: inline-flex;
-  max-width: 62.5rem;
-  font-weight: 600;
-  justify-content: center;
-  color: #fff;
   align-items: center;
-  border-radius: 10px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  line-height: 1;
+  border-radius: 0.625rem;
   border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 1.2rem;
+  font-weight: 600;
+  height: 3.125rem;
+  justify-content: center;
+  line-height: 1;
+  max-width: 62.5rem;
+  width: 100%;
   background-color: #01b4e4;
   &:hover {
     color: #032541;
   }
 `;
+
+/**
+ * Movies component displays a list of movies fetched from an API and provides a "Load More" button for pagination.
+ *
+ */
 export default function Movies() {
   const { moviesList, setMoviesList } = useMovies();
   const { filter } = useFilter();
   const [laoding, setLoading] = useState(true);
   const [page, setPage] = useState(1);
+  /**
+   * Fetch movies from an API and set them in the state.
+   */
   const fetchMovies = async () => {
     try {
       const response = await useFetchMovies({});
@@ -56,12 +62,17 @@ export default function Movies() {
     fetchMovies();
   }, []);
 
+  /**
+   * If the component is still loading, display skeleton image with empty data.
+   */
   useEffect(() => {
     if (laoding) {
       setMoviesList(loadingMovies);
     }
   }, [laoding]);
-
+  /**
+   * Fetch more movies for pagination when the page number changes.
+   */
   const Loadmore = async () => {
     try {
       const response = await useFetchMovies({ ...filter, page });

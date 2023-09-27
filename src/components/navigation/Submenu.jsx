@@ -3,43 +3,50 @@ import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 
 const Menu = styled.div`
-  width: 10.8125rem;
+  box-sizing: content-box;
   height: 8.625rem;
+  left: 10;
   overflow: visible;
-  z-index: 10002;
   position: absolute;
   top: 3rem;
-  left: 10;
-  box-sizing: content-box;
+  width: 10.8125rem;
+  z-index: 10002;
 `;
 
 const Ul = styled.ul`
-  max-height: 24.4375rem;
-  overflow: auto;
-  font-size: 1rem;
-  font-stretch: 100%;
-  list-style: none;
-  margin: 0;
-  border: 1px solid #d9d9d9;
+  background-color: #fff;
   border-radius: 0.25rem;
   border-width: 0.0625rem;
+  border: 1px solid #d9d9d9;
   box-sizing: border-box;
+  color: #212529;
+  font-size: 1rem;
+  font-stretch: 100%;
   font-weight: 400;
   line-height: 1.5rem;
-  color: #212529;
-  background-color: #fff;
+  list-style: none;
+  margin: 0;
+  max-height: 24.4375rem;
+  overflow: auto;
 `;
 
 const Li = styled.li`
-  position: relative;
-  right: 40px;
-  line-height: 1.5;
-  padding: 5px 64px 5px 24px;
-  display: flex;
-  cursor: pointer;
   align-items: center;
   box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  line-height: 1.5;
+  padding: 0.3125rem 4rem 0.3125rem 1.5rem;
+  position: relative;
+  right: 2.5rem;
 `;
+
+/**
+ * Renders a submenu component with a list of items.
+ *
+ * @param {Object} props - The component's props.
+ * @param {Array} props.list - An array of objects with submenu item data.
+ */
 function Submenu({ list }) {
   return (
     <Menu>

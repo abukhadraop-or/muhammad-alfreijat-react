@@ -6,46 +6,44 @@ import PropTypes from "prop-types";
 import skeleton from "assets/skeleton.gif";
 
 const Card = styled.div`
-  position: relative;
-  top: 0;
-  left: 0;
-  display: flex;
-  max-height: 25rem;
-  flex-wrap: wrap;
   align-content: flex-start;
+  border-radius: 0.5rem;
   border: 1px solid #e3e3e3;
-  overflow: hidden;
-  width: 11.25rem;
-  border-radius: 8px;
-  cursor: pointer;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  left: 0;
+  max-height: 25rem;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  width: 11.25rem;
 `;
 
 const Img = styled.img`
+  height: 17.0625rem;
   width: 100%;
-  height: 273px;
 `;
 
 const Content = styled.div`
-  width: 100%;
-  padding: 26px 10px 12px;
+  align-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1.625rem 0.625rem 0.75rem;
   position: relative;
   white-space: normal;
-  display: flex;
-  align-content: flex-start;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  box-sizing: border-box;
+  width: 100%;
 `;
 
 const Title = styled.h2`
   font-size: 1rem;
-  width: 100%;
-  overflow-wrap: break-word;
   font-weight: 600;
-  margin: 0 0 2px 0;
-  padding: 0;
+  margin: 0 0 0.125rem 0;
+  overflow-wrap: break-word;
+  width: 100%;
 
   &:hover {
     color: #01b4e4;
@@ -53,20 +51,28 @@ const Title = styled.h2`
 `;
 
 const Date = styled.p`
+  color: rgba(0, 0, 0, 0.6);
   font-size: 1em;
   margin: 0;
   padding: 0;
-  color: rgba(0, 0, 0, 0.6);
 `;
 
 const RatingContainer = styled.div`
-  width: 38px;
-  height: 38px;
+  font-weight: 600;
+  height: 2.375rem;
   position: absolute;
   top: -25%;
-  font-weight: 600;
+  width: 2.375rem;
 `;
-
+/**
+ * MovieCard component displays information about a movie, including an image, title, date, and rating.
+ *
+ * @param {Object} props - The component's properties.
+ * @param {string} props.img - The image URL for the movie.
+ * @param {string} props.title - The title of the movie.
+ * @param {number|string} props.rating - The rating of the movie.
+ * @param {string} props.date - The release date of the movie.
+ */
 function MovieCard({ img, rating, title, date }) {
   const precentage = rating * 10;
   let textPrecentage = precentage;
@@ -89,7 +95,12 @@ function MovieCard({ img, rating, title, date }) {
     pathColor = "#666666";
     trialColor = "#666666";
   }
-
+  /**
+   * Format a date string in the "yyyy-MM-dd" format to a more human-readable format.
+   *
+   * @param {string} inputDate - The date in "yyyy-MM-dd" format.
+   * @returns {string} The formatted date in "MMM dd, yyyy" format.
+   */
   const formatDate = (inputDate) => {
     const months = [
       "Jan",
@@ -165,5 +176,3 @@ MovieCard.propTypes = {
 };
 
 export default MovieCard;
-
-// { img, title, date, rating }

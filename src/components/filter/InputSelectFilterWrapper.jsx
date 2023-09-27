@@ -5,43 +5,46 @@ import useFilter from "hooks/useFilters";
 import selectFilter from "hooks/selectFilter";
 
 const H3 = styled.h3`
-  display: inline-flex;
   align-items: center;
-  width: 100%;
+  box-sizing: border-box;
+  display: inline-flex;
   font-size: 1em;
   font-weight: 300;
   margin-bottom: 0.625rem;
-  box-sizing: border-box;
+  width: 100%;
 `;
 
 const Container = styled.label`
+  box-sizing: border-box;
   display: inline-flex;
   width: 100%;
-  box-sizing: border-box;
 `;
 const Input = styled.input`
-  padding: 0;
-  box-sizing: border-box;
-  min-width: 1rem;
   border-radius: 0.25rem;
-  width: 1rem;
+  border-style: solid;
+  border-width: 0.0625rem;
+  display: inline-block;
   height: 1rem;
   line-height: initial;
-  border-width: 0.0625rem;
-  border-style: solid;
-  outline: 0;
-  display: inline-block;
-  vertical-align: middle;
-  webkit-appearance: none;
+  min-width: 1rem;
+  width: 1rem;
 `;
 const Label = styled.label`
-  display: inline;
-  margin: 0.1875rem 0.25rem; 0 0;
-  position: relative;
   cursor: pointer;
+  display: inline;
   font-size: 1rem;
+  margin: 0.1875rem 0.25rem 0 0;
+  position: relative;
 `;
 
+/**
+ * InputSelectFilterWrapper component provides a user interface for displaying filter based on their category
+ *
+ * @param {string} filterText - The text to display as the title of the filter section.
+ * @param {string} firstOption - The text to display for the first filter option.
+ * @param {string} chosenFilter - The chosen filter option.
+ * @param {JSX.Element} children - The child elements to display when the filter is expanded.
+ */
 function InputSelectFilterWrapper({
   filterText,
   firstOption,

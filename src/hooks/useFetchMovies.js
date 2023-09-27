@@ -1,3 +1,19 @@
+/**
+ * A custom hook to fetch movies from The Movie Database (TMDb) API based on various filters.
+ *
+ * @param {Object} options - An object containing various filtering options.
+ * @param {number} options.page - The page number for paginated results (default is 1).
+ * @param {string} options.sort - The sorting order for the results (default is "popularity.desc").
+ * @param {string|null} options.language - The original language of the movies (optional).
+ * @param {Array|null} options.genre - An array of genre IDs (optional).
+ * @param {string|null} options.country - The origin country of the movies (optional).
+ * @param {string|null} options.dateGte - Filter movies with a release date greater than or equal to this date (optional).
+ * @param {string|null} options.dateLte - Filter movies with a release date less than or equal to this date (optional).
+ * @param {Array|null} options.keywords - An array of keyword IDs (optional).
+ * @param {Array|null} options.releaseType - An array of release types (optional).
+ * @param {Array|null} options.watchType - An array of watch monetization types (optional).
+ * @returns {Promise<Array>} A Promise that resolves to an array of movie objects.
+ */
 const useFetchMovies = async ({
   page = 1,
   sort = "popularity.desc",
@@ -13,31 +29,15 @@ const useFetchMovies = async ({
   const languageFilter = language ? `&with_original_language=${language}` : "";
 
   const genresFilter =
-    genre || genre?.length === 0
-      ? `&with_genres=${
-          genre[0] +
-          genre.slice(1).reduce((res, value) => `${res}%2C${value}`, "")
-        }`
-      : "";
-  const keywordsFilter = keywords
-    ? `&with_genres=${
-        keywords[0] +
-        keywords.slice(1).reduce((res, value) => `${res}%2C${value}`, "")
-      }`
-    : "";
+    genre || genre?.length === 0 ? `&with_genres=${genre.join(",")}` : "";
+  const keywordsFilter = keywords ? `&with_keywords=${keywords.join(",")}` : "";
   const typeFilter =
     releaseType || releaseType?.length === 0
-      ? `&with_release_type=${
-          releaseType[0] +
-          releaseType.slice(1).reduce((res, value) => `${res}%7C${value}`, "")
-        }`
+      ? `&with_release_type=${releaseType.join("|")}`
       : "";
   const watchTypeFilter =
     watchType || watchType?.length === 0
-      ? `&with_watch_monetization_types=${
-          watchType[0] +
-          watchType.slice(1).reduce((res, value) => `${res}%7C${value}`, "")
-        }`
+      ? `&with_watch_monetization_types=${watchType.join("|")}`
       : "";
   const countryFilter = country ? `&with_origin_country=${country}` : "";
   const dateGteFilter = dateGte ? `&primary_release_date.gte=${dateGte}` : "";
@@ -58,5 +58,3 @@ const useFetchMovies = async ({
 };
 
 export default useFetchMovies;
-// 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc'
-// https://api.themoviedb.org/3/genre/movie/list    for Genres
