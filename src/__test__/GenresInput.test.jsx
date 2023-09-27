@@ -6,6 +6,8 @@ import { genres } from "data/filtersInfo";
 import userEvent from "@testing-library/user-event";
 import { act } from "react-dom/test-utils";
 
+const { getByText } = screen;
+
 describe("Testing GenresInput component.", () => {
   beforeEach(() => {
     render(<GenresInput />);
@@ -13,14 +15,14 @@ describe("Testing GenresInput component.", () => {
 
   it("Renders all the genres", () => {
     genres.forEach((gen) => {
-      expect(screen.getByText(gen.name)).toBeInTheDocument();
+      expect(getByText(gen.name)).toBeInTheDocument();
     });
   });
 
   it("Genres color is changed when hovering over them.", () => {
     act(() => {
       genres.forEach((gen) => {
-        const genreElement = screen.getByText(gen.name);
+        const genreElement = getByText(gen.name);
         userEvent.hover(genreElement);
 
         expect(genreElement).toHaveStyle({
@@ -34,7 +36,7 @@ describe("Testing GenresInput component.", () => {
   it("Genres color is changed when clicked.", async () => {
     act(() => {
       genres.forEach((gen) => {
-        const genreElement = screen.getByText(gen.name);
+        const genreElement = getByText(gen.name);
         userEvent.click(genreElement);
 
         expect(genreElement).toHaveStyle({

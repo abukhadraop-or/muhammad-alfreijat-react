@@ -139,6 +139,7 @@ function MovieCard({ img, rating, title, date }) {
             : skeleton
         }
         loading="lazy"
+        alt={img ? "img" : "skeleton"}
       />
       <Content>
         <Title>{title}</Title>

@@ -3,6 +3,7 @@ import * as React from "react";
 import { render, screen } from "@testing-library/react";
 import FilterPanel from "components/filter/FilterPanel";
 
+const { getByText } = screen;
 describe("Testing FilterPanel component.", () => {
   let testTitle;
   let testChildren;
@@ -21,12 +22,12 @@ describe("Testing FilterPanel component.", () => {
   });
 
   it("Renders the title correctly", () => {
-    const titleElement = screen.getByText(testTitle);
+    const titleElement = getByText(testTitle);
     expect(titleElement).toBeInTheDocument();
   });
 
   it("Renders the children correctly", () => {
-    const childrenElement = screen.getByText("Test Children");
+    const childrenElement = getByText("Test Children");
     expect(childrenElement).toBeInTheDocument();
   });
 });

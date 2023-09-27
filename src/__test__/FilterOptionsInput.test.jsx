@@ -4,6 +4,8 @@ import { render, screen } from "@testing-library/react";
 import FilterOptionsInput from "components/filter/FilterOptionsInput";
 import userEvent from "@testing-library/user-event";
 
+const { getByText, getByRole } = screen;
+
 describe("Testing FilterOptionsInput component.", () => {
   let testOptions;
 
@@ -24,15 +26,15 @@ describe("Testing FilterOptionsInput component.", () => {
   });
   it("Renders the passed array of options to the component.", () => {
     testOptions.forEach((option) => {
-      const checkbox = screen.getByRole("checkbox", { name: option.option });
+      const checkbox = getByRole("checkbox", { name: option.option });
       expect(checkbox).toBeInTheDocument();
-      expect(screen.getByText(option.option)).toBeInTheDocument();
+      expect(getByText(option.option)).toBeInTheDocument();
     });
   });
 
   it("Checks if checkbox is checked intitally and is unchecked after clicking", () => {
     testOptions.forEach((option) => {
-      const checkbox = screen.getByRole("checkbox", { name: option.option });
+      const checkbox = getByRole("checkbox", { name: option.option });
       expect(checkbox).toBeChecked();
       userEvent.click(checkbox);
       expect(checkbox).not.toBeChecked();
@@ -41,7 +43,7 @@ describe("Testing FilterOptionsInput component.", () => {
 
   it("Checks if checkbox is unchecked after clicking", () => {
     testOptions.forEach((option) => {
-      const checkbox = screen.getByRole("checkbox", { name: option.option });
+      const checkbox = getByRole("checkbox", { name: option.option });
       expect(checkbox).toBeChecked();
       userEvent.click(checkbox);
       userEvent.click(checkbox);
