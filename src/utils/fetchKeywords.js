@@ -13,7 +13,7 @@ const options = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MGZmODMzN2FjNTNkOGY1MjQ0M2ExZDYzMDU3MGFmZiIsInN1YiI6IjY1MDk3NGRjMzk0YTg3MDBlMjI3YWUxOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.D9BjaxIaoMbriOZgKWo4qhmwuEVMXeMh3epbu95yFNY",
   },
 };
-const useFetchKeywords = async (keyword) => {
+const fetchKeywords = async (keyword) => {
   const response = await fetch(
     `https://api.themoviedb.org/3/search/keyword?query=${keyword}&page=1`,
     options,
@@ -22,4 +22,4 @@ const useFetchKeywords = async (keyword) => {
   return results.results;
 };
 
-export default useFetchKeywords;
+export default fetchKeywords;

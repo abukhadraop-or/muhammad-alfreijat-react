@@ -2,43 +2,41 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import PanelContent from "components/filter/PanelContent";
-import useOpenPanel from "hooks/useOpenPanel";
 
-const { getByText, queryByText } = screen;
-jest.mock("jotai", () => {
-  const actual = jest.requireActual("jotai");
-  const customAtom = actual.atom({
-    somePanel: false,
-    watch: false,
-    filter: false,
-  });
-
-  return {
-    ...actual,
-    atom: jest.fn(() => customAtom),
-  };
-});
+const {getByText} = screen;
+jest.mock("hooks/useOpenPanel", () => ({
+  __esModule: true,
+  default: jest.fn(),
+}));
 
 describe("PanelContent component", () => {
-  it("should render the content when the panel is open", () => {
+  it("should render with panel open", () => {
+    jest
+      .requireMock("hooks/useOpenPanel")
+      .default.mockReturnValue({ panel: { chosenPanel: true } });
+
     render(
-      <PanelContent chosenPanel="somePanel">
-        <div>Panel Content</div>
+      <PanelContent chosenPanel="chosenPanel">
+        <div>Content when panel is open</div>
       </PanelContent>,
     );
 
-    const panelContent = getByText("Panel Content");
-    expect(panelContent).toBeInTheDocument();
+    expect(getByText("Content when panel is open")).toBeInTheDocument();
   });
 
-  it("should not render the content when the panel is closed", () => {
+  it("should render with panel closed", () => {
+    jest
+      .requireMock("hooks/useOpenPanel")
+      .default.mockReturnValue({ panel: { chosenPanel: false } });
+
     render(
-      <PanelContent chosenPanel="somePanel">
-        <div>Panel Content</div>
+      <PanelContent chosenPanel="chosenPanel">
+        <div>Content when panel is closed</div>
       </PanelContent>,
     );
 
-    const panelContent = queryByText("Panel Content");
-    expect(panelContent).not.toBeInTheDocument();
+    expect(
+      getByText("Content when panel is closed"),
+    ).toBeInTheDocument();
   });
 });

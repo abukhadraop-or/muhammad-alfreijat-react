@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import useFilter from "hooks/useFilters";
-import selectFilter from "hooks/selectFilter";
+import selectFilter from "utils/selectFilter";
 
 const H3 = styled.h3`
   align-items: center;

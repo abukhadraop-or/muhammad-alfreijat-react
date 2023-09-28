@@ -1,9 +1,9 @@
-import useFetchKeywords from "hooks/useFetchKeywords";
+import fetchKeywords from "utils/fetchKeywords";
 import React, { useEffect, useState } from "react";
 import { Select } from "antd";
 import styled from "@emotion/styled";
 import useFilter from "hooks/useFilters";
-import selectFilter from "hooks/selectFilter";
+import selectFilter from "utils/selectFilter";
 
 const { Option } = Select;
 
@@ -30,7 +30,7 @@ function InputKeywords() {
    * @param {string} inputValue - The input value to search for keywords.
    */
   const searchKeywords = async (inputValue) => {
-    const keywords = await useFetchKeywords(inputValue);
+    const keywords = await fetchKeywords(inputValue);
     setFilteredOptions(keywords);
   };
 

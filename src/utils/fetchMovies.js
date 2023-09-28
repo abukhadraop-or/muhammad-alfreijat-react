@@ -14,7 +14,7 @@
  * @param {Array|null} options.watchType - An array of watch monetization types (optional).
  * @returns {Promise<Array>} A Promise that resolves to an array of movie objects.
  */
-const useFetchMovies = async ({
+const fetchMovies = async ({
   page = 1,
   sort = "popularity.desc",
   language = null,
@@ -52,9 +52,8 @@ const useFetchMovies = async ({
         "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MGZmODMzN2FjNTNkOGY1MjQ0M2ExZDYzMDU3MGFmZiIsInN1YiI6IjY1MDk3NGRjMzk0YTg3MDBlMjI3YWUxOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.D9BjaxIaoMbriOZgKWo4qhmwuEVMXeMh3epbu95yFNY",
     },
   };
-  console.log(Uri);
   const response = await fetch(Uri, options);
   return response.json();
 };
 
-export default useFetchMovies;
+export default fetchMovies;

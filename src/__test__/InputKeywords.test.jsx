@@ -6,43 +6,49 @@ import InputKeywords from "components/filter/InputKeywords";
 import { act } from "react-dom/test-utils";
 
 const { getByText } = screen;
-jest.mock("hooks/useFetchKeywords", () => {
-  return {
-    __esModule: true,
-    default: jest.fn((inputValue) => {
-      return Promise.resolve([
-        { id: 1, name: "Keyword 1" },
-        { id: 2, name: "Keyword 2" },
-        { id: 3, name: "Keyword 3" },
-      ]);
-    }),
-  };
-});
+
+global.fetch = jest.fn();
 
 describe("InputKeywords component", () => {
-  beforeEach(() => {
-    render(<InputKeywords />);
-  });
   it("should render without errors", () => {
     render(<InputKeywords />);
   });
 
   it("should search and select keywords", async () => {
-    await act(async () => {
-      const inputElement = document.querySelector(
-        ".ant-select-selection-search input",
-      );
-      userEvent.type(inputElement, "Keyword 1");
+    global.fetch.mockResolvedValue({
+      json: async () => ({
+        results: [
+          { id: 0, name: "keyword1" },
+          { id: 1, name: "keyword2" },
+          { id: 2, name: "keyword3" },
+        ],
+      }),
+    });
+    render(<InputKeywords />);
+    const inputElement = screen.getByRole("combobox");
+    expect(inputElement).toHaveAttribute("readonly");
 
-      await waitFor(() => {
+    await waitFor(() => {
+      userEvent.click(inputElement);
+    });
+    await act(async () => {
+      userEvent.type(inputElement, "Keyw");
+    });
+
+    await waitFor(() => {
+      expect(inputElement.value).toBe("Keyw");
+    });
+
+    await waitFor(() => {
+      jest.setTimeout(() => {
         const keywordOption = getByText("Keyword 1");
         expect(keywordOption).toBeInTheDocument();
-      });
-
-      userEvent.click(getByText("Keyword 1"));
-
-      const selectedKeyword = getByText("Keyword 1");
-      expect(selectedKeyword).toBeInTheDocument();
+        act(async () => {
+          userEvent.click(getByText("Keyword 1"));
+        });
+        const selectedKeyword = getByText("Keyword 1");
+        expect(selectedKeyword).toBeInTheDocument();
+      }, 1000);
     });
   });
 });

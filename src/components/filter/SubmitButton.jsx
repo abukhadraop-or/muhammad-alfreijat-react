@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import useFilter from "hooks/useFilters";
 import useMovies from "hooks/useMovies";
-import useFetchMovies from "hooks/useFetchMovies";
+import useFetchMovies from "utils/fetchMovies";
 
 const Search = styled.button`
   align-items: center;

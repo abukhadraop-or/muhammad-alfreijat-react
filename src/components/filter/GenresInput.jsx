@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { genres } from "data/filtersInfo";
-import selectFilter from "hooks/selectFilter";
+import selectFilter from "utils/selectFilter";
 import useFilter from "hooks/useFilters";
 
 const H3 = styled.h3`

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
-import useFetchMovies from "hooks/useFetchMovies";
+import fetchMovies from "utils/fetchMovies";
 import MovieCard from "components/movie/MovieCard";
 import useMovies from "hooks/useMovies";
 import { loadingMovies } from "atoms/allAtoms";
@@ -43,14 +43,14 @@ const LoadButton = styled.button`
 export default function Movies() {
   const { moviesList, setMoviesList } = useMovies();
   const { filter } = useFilter();
-  const [laoding, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   /**
    * Fetch movies from an API and set them in the state.
    */
-  const fetchMovies = async () => {
+  const setMovies = async () => {
     try {
-      const response = await useFetchMovies({});
+      const response = await fetchMovies({});
       setLoading(false);
       setMoviesList(response.results);
     } catch (error) {
@@ -59,23 +59,23 @@ export default function Movies() {
   };
 
   useEffect(() => {
-    fetchMovies();
+    setMovies();
   }, []);
 
   /**
    * If the component is still loading, display skeleton image with empty data.
    */
   useEffect(() => {
-    if (laoding) {
+    if (loading) {
       setMoviesList(loadingMovies);
     }
-  }, [laoding]);
+  }, [loading]);
   /**
    * Fetch more movies for pagination when the page number changes.
    */
   const Loadmore = async () => {
     try {
-      const response = await useFetchMovies({ ...filter, page });
+      const response = await fetchMovies({ ...filter, page });
       const newMovieList = [...moviesList, ...response.results];
       setMoviesList(newMovieList);
     } catch (error) {
