@@ -1,69 +1,20 @@
-import React from "react";
-import styled from "@emotion/styled";
+import React, { useState } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import PropTypes from "prop-types";
 import skeleton from "assets/skeleton.gif";
+import Menu from "assets/menu.svg";
+import MenuBlue from "assets/menuBlue.svg";
+import {
+  Card,
+  CardImg,
+  CardContent,
+  CardTitle,
+  Date,
+  RatingContainer,
+  MenuIcon,
+} from "components/movie/movieStyles";
 
-const Card = styled.div`
-  align-content: flex-start;
-  border-radius: 0.5rem;
-  border: 1px solid #e3e3e3;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-  cursor: pointer;
-  display: flex;
-  flex-wrap: wrap;
-  left: 0;
-  max-height: 25rem;
-  overflow: hidden;
-  position: relative;
-  top: 0;
-  width: 11.25rem;
-`;
-
-const Img = styled.img`
-  height: 17.0625rem;
-  width: 100%;
-`;
-
-const Content = styled.div`
-  align-content: flex-start;
-  align-items: flex-start;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 1.625rem 0.625rem 0.75rem;
-  position: relative;
-  white-space: normal;
-  width: 100%;
-`;
-
-const Title = styled.h2`
-  font-size: 1rem;
-  font-weight: 600;
-  margin: 0 0 0.125rem 0;
-  overflow-wrap: break-word;
-  width: 100%;
-
-  &:hover {
-    color: #01b4e4;
-  }
-`;
-
-const Date = styled.p`
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 1em;
-  margin: 0;
-  padding: 0;
-`;
-
-const RatingContainer = styled.div`
-  font-weight: 600;
-  height: 2.375rem;
-  position: absolute;
-  top: -25%;
-  width: 2.375rem;
-`;
 /**
  * MovieCard component displays information about a movie, including an image, title, date, and rating.
  *
@@ -74,6 +25,7 @@ const RatingContainer = styled.div`
  * @param {string} props.date - The release date of the movie.
  */
 function MovieCard({ img, rating, title, date }) {
+  const [subMenuHover, setSubMenuHover] = useState(false);
   const precentage = rating * 10;
   let textPrecentage = precentage;
   let pathColor;
@@ -132,7 +84,16 @@ function MovieCard({ img, rating, title, date }) {
 
   return (
     <Card>
-      <Img
+      <MenuIcon
+        src={!subMenuHover ? Menu : MenuBlue}
+        onMouseEnter={() => {
+          setSubMenuHover(true);
+        }}
+        onMouseLeave={() => {
+          setSubMenuHover(false);
+        }}
+      />
+      <CardImg
         src={
           img
             ? `https://www.themoviedb.org/t/p/w440_and_h660_face${img}`
@@ -141,8 +102,8 @@ function MovieCard({ img, rating, title, date }) {
         loading="lazy"
         alt={img ? "img" : "skeleton"}
       />
-      <Content>
-        <Title>{title}</Title>
+      <CardContent>
+        <CardTitle>{title}</CardTitle>
         <Date>{formatDate(date)}</Date>
         <RatingContainer>
           <CircularProgressbar
@@ -158,7 +119,7 @@ function MovieCard({ img, rating, title, date }) {
             })}
           />
         </RatingContainer>
-      </Content>
+      </CardContent>
     </Card>
   );
 }

@@ -1,21 +1,12 @@
 import fetchKeywords from "utils/fetchKeywords";
 import React, { useEffect, useState } from "react";
 import { Select } from "antd";
-import styled from "@emotion/styled";
 import useFilter from "hooks/useFilters";
 import selectFilter from "utils/selectFilter";
+import { Title } from "components/filter/filterStyles";
 
 const { Option } = Select;
 
-const H3 = styled.h3`
-  align-items: center;
-  box-sizing: border-box;
-  display: inline-flex;
-  font-size: 1em;
-  font-weight: 300;
-  margin-bottom: 0.625rem;
-  width: 100%;
-`;
 /**
  * InputKeywords component allows users to select keywords for filtering.
  */
@@ -49,7 +40,7 @@ function InputKeywords() {
     <>
       {/* Display the component title */}
 
-      <H3>Keywords</H3>
+      <Title>Keywords</Title>
       <Select
         mode="multiple"
         placeholder="Search and select keywords"

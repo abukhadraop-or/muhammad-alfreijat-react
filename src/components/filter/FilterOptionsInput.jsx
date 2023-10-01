@@ -1,23 +1,13 @@
 import React, { useEffect, useState } from "react";
-import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import useFilter from "hooks/useFilters";
 import selectFilter from "utils/selectFilter";
+import {
+  Container,
+  InputCheckbox,
+  Label,
+} from "components/filter/filterStyles";
 
-const Container = styled.label`
-  display: inline-flex;
-  width: 100%;
-`;
-const Input = styled.input`
-  cursor: pointer;
-  min-width: 1rem;
-`;
-const Label = styled.label`
-  cursor: pointer;
-  display: inline;
-  font-size: 1rem;
-  margin: 0.1875rem 0.25rem; 0 0;
-`;
 /**
  * Component for filtering options with checkboxes.
  * @param {Object} props - The component's props.
@@ -63,7 +53,7 @@ function FilterOptionsInput({ options, chosenFilter }) {
     <>
       {options.map((option, index) => (
         <Container key={option.id}>
-          <Input
+          <InputCheckbox
             type="checkbox"
             value={option.value}
             id={option.value}

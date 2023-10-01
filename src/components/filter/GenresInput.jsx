@@ -1,39 +1,9 @@
 import React, { useEffect, useState } from "react";
-import styled from "@emotion/styled";
 import { genres } from "data/filtersInfo";
 import selectFilter from "utils/selectFilter";
 import useFilter from "hooks/useFilters";
+import { GenresContainer, Genre, Title } from "components/filter/filterStyles";
 
-const H3 = styled.h3`
-  align-items: center;
-  box-sizing: border-box;
-  display: inline-flex;
-  font-size: 1em;
-  font-weight: 300;
-  margin-bottom: 0.625rem;
-  width: 100%;
-`;
-
-const GenresContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-`;
-
-const Genre = styled.div`
-  border-radius: 0.875rem;
-  border: 1px solid #9e9e9e;
-  cursor: pointer;
-  display: inline-flex;
-  font-size: 0.9em;
-  padding: 0.25rem 0.75rem;
-
-  &:hover {
-    background-color: rgba(1, 180, 228, 1);
-    border-color: rgba(1, 180, 228, 1);
-    color: #fff;
-  }
-`;
 /**
  * GenresInput component allows users to filter items by genres.
  * @component
@@ -65,7 +35,7 @@ function GenresInput() {
     <>
       {/* Display the component title */}
 
-      <H3>Genres</H3>
+      <Title>Genres</Title>
       <GenresContainer>
         {/* Display each genre as a clickable option */}
 

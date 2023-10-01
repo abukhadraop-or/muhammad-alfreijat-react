@@ -1,16 +1,13 @@
 import React from "react";
-import styled from "@emotion/styled";
+import { NoItemDiv } from "components/movie/movieStyles";
+import { noItemsMessage } from "data/constants";
 
-const Div = styled.div`
-  height: 60vh;
-  width: 60vw;
-`;
 /**
  * MoviesContainer component renders when there is no movie to display.
  *
  */
 function NoItems() {
-  return <Div>No items were found that match your query.</Div>;
+  return <NoItemDiv>{noItemsMessage}</NoItemDiv>;
 }
 
 export default NoItems;

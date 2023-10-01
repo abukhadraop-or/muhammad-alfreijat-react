@@ -1,40 +1,11 @@
 import React, { useEffect, useState } from "react";
-import styled from "@emotion/styled";
 import fetchMovies from "utils/fetchMovies";
 import MovieCard from "components/movie/MovieCard";
 import useMovies from "hooks/useMovies";
 import { loadingMovies } from "atoms/allAtoms";
 import NoItems from "components/movie/NoItems";
 import useFilter from "hooks/useFilters";
-
-const MoviesContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  @media (max-width: 1200px) {
-    justify-content: center;
-  }
-`;
-
-const LoadButton = styled.button`
-  align-items: center;
-  border-radius: 0.625rem;
-  border: 0;
-  color: #fff;
-  cursor: pointer;
-  display: inline-flex;
-  font-size: 1.2rem;
-  font-weight: 600;
-  height: 3.125rem;
-  justify-content: center;
-  line-height: 1;
-  max-width: 62.5rem;
-  width: 100%;
-  background-color: #01b4e4;
-  &:hover {
-    color: #032541;
-  }
-`;
+import { MoviesContainer, LoadButton } from "components/movie/movieStyles";
 
 /**
  * Movies component displays a list of movies fetched from an API and provides a "Load More" button for pagination.

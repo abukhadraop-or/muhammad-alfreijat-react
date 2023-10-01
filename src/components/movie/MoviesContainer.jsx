@@ -1,26 +1,17 @@
 import React from "react";
-import styled from "@emotion/styled";
 import FiltersContainer from "components/filter/FiltersContainer";
 import Movies from "components/movie/Movies";
-
+import { MoviesFilterContainer } from "components/movie/movieStyles";
 /**
  * MoviesContainer component displays FiltersContainer and Movies components side by side .
  *
  */
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 1.875rem;
-  margin: 0 auto;
-  @media (max-width: 1024px) {
-    flex-direction: column;
-  }
-`;
+
 export default function MoviesContainer() {
   return (
-    <Container>
+    <MoviesFilterContainer>
       <FiltersContainer />
       <Movies />
-    </Container>
+    </MoviesFilterContainer>
   );
 }

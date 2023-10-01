@@ -1,32 +1,13 @@
 import React, { useEffect, useState } from "react";
-import styled from "@emotion/styled";
 import selectFilter from "utils/selectFilter";
 import useFilter from "hooks/useFilters";
 import { DatePicker } from "antd";
+import {
+  InputDateContainer,
+  DateLabel,
+  DateContainer,
+} from "components/filter/filterStyles";
 
-const Div = styled.div`
-  display: flex;
-  margin: 0.625rem auto;
-
-  .date_picker {
-    height: 1.875rem;
-    width: 100%;
-  }
-`;
-
-const Label = styled.label`
-  color: #a4a4a4;
-  cursor: pointer;
-  display: inline;
-  font-size: 0.9rem;
-  margin: 0.5875rem 1.25rem 0 0;
-  position: relative;
-  width: 3.1875rem;
-`;
-
-const DateContainer = styled.div`
-  width: 100%;
-`;
 /**
  * A component that set the date filter.
  *
@@ -46,8 +27,8 @@ function InputDate() {
   }, [gteDate]);
   return (
     <>
-      <Div>
-        <Label htmlFor="ltedate">From</Label>
+      <InputDateContainer>
+        <DateLabel htmlFor="ltedate">From</DateLabel>
         <DateContainer>
           <DatePicker
             className="date_picker"
@@ -57,9 +38,9 @@ function InputDate() {
             onChange={(date) => setLteDate(date)}
           />
         </DateContainer>
-      </Div>
-      <Div>
-        <Label htmlFor="gtedate">To</Label>
+      </InputDateContainer>
+      <InputDateContainer>
+        <DateLabel htmlFor="gtedate">To</DateLabel>
         <DateContainer>
           <DatePicker
             className="date_picker"
@@ -69,7 +50,7 @@ function InputDate() {
             onChange={(date) => setGteDate(date)}
           />
         </DateContainer>
-      </Div>
+      </InputDateContainer>
     </>
   );
 }

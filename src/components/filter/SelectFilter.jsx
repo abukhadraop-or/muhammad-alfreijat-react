@@ -1,26 +1,8 @@
 import React from "react";
-import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import useFilter from "hooks/useFilters";
 import selectFilter from "utils/selectFilter";
-
-const H3 = styled.h3`
-  align-items: center;
-  display: inline-flex;
-  font-size: 1em;
-  font-weight: 300;
-  margin-bottom: 0.625rem;
-  width: 100%;
-`;
-
-const Select = styled.select`
-  background-color: #ced3db;
-  border-radius: 0.25rem;
-  border: 0;
-  font-size: 0.9em;
-  padding: 0.375rem 0.75rem;
-  width: 100%;
-`;
+import { Title, Select } from "components/filter/filterStyles";
 
 /**
  * SelectFilter component allows users to filter items by selecting from a list of options.
@@ -45,7 +27,7 @@ function SelectFilter({
   return (
     <>
       <label htmlFor={title}>
-        <H3>{title}</H3>
+        <Title>{title}</Title>
       </label>
       <Select
         name={title}

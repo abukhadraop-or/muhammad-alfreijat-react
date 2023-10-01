@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "@emotion/styled";
 import PanelContent from "components/filter/PanelContent";
 import FilterPanel from "components/filter/FilterPanel";
 import SelectFilter from "components/filter/SelectFilter";
@@ -16,12 +15,7 @@ import {
   languages,
   countries,
 } from "data/filtersInfo";
-
-const FilterContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.625rem;
-`;
+import { FilterContainer } from "components/filter/filterStyles";
 
 /**
  * A component that displays a filter container with various filter options.

@@ -1,41 +1,13 @@
 import React, { useEffect, useState } from "react";
-import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import useFilter from "hooks/useFilters";
 import selectFilter from "utils/selectFilter";
-
-const H3 = styled.h3`
-  align-items: center;
-  box-sizing: border-box;
-  display: inline-flex;
-  font-size: 1em;
-  font-weight: 300;
-  margin-bottom: 0.625rem;
-  width: 100%;
-`;
-
-const Container = styled.label`
-  box-sizing: border-box;
-  display: inline-flex;
-  width: 100%;
-`;
-const Input = styled.input`
-  border-radius: 0.25rem;
-  border-style: solid;
-  border-width: 0.0625rem;
-  display: inline-block;
-  height: 1rem;
-  line-height: initial;
-  min-width: 1rem;
-  width: 1rem;
-`;
-const Label = styled.label`
-  cursor: pointer;
-  display: inline;
-  font-size: 1rem;
-  margin: 0.1875rem 0.25rem 0 0;
-  position: relative;
-`;
+import {
+  CheckboxFilterContainer,
+  MainCheckboxInput,
+  Title,
+  Label,
+} from "components/filter/filterStyles";
 
 /**
  * InputSelectFilterWrapper component provides a user interface for displaying filter based on their category
@@ -61,9 +33,9 @@ function InputSelectFilterWrapper({
   }, [showOptions]);
   return (
     <>
-      <H3>{filterText}</H3>
-      <Container>
-        <Input
+      <Title>{filterText}</Title>
+      <CheckboxFilterContainer>
+        <MainCheckboxInput
           type="checkbox"
           id="box"
           checked={showOptions}
@@ -72,7 +44,7 @@ function InputSelectFilterWrapper({
           }}
         />
         <Label htmlFor="box"> {firstOption}</Label>
-      </Container>
+      </CheckboxFilterContainer>
       {!showOptions && children}
     </>
   );

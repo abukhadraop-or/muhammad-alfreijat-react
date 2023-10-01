@@ -1,18 +1,8 @@
 import React from "react";
-import styled from "@emotion/styled";
 import useOpenPanel from "hooks/useOpenPanel";
 import PropTypes from "prop-types";
+import { PanalContent } from "components/filter/filterStyles";
 
-const PanalContent = styled.div`
-  border-top: 0.0625rem solid #eee;
-  display: ${(props) => (props.open ? "block" : "none")};
-  padding: 0 1rem 1rem;
-  width: 260px;
-  @media (max-width: 1024px) {
-    margin-top: 0;
-    width: 100%;
-  }
-`;
 /**
  * PanelContent component provides a container for displaying filter panel content.
  *
