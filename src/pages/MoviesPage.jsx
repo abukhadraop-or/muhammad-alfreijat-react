@@ -1,6 +1,6 @@
 import React from "react";
 import MoviesContainer from "components/movie/MoviesContainer";
-import { PageContainer, PageTitle } from "pages/pages.styles";
+import { PageContainer, PageTitle } from "pages/styles";
 import { moviePageMainTitle } from "data/constants";
 
 /**
