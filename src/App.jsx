@@ -1,7 +1,7 @@
 import React from "react";
 import AppRoutes from "AppRoutes";
-import Navbar from "components/navigation/Navbar";
-import Footer from "components/navigation/Footer";
+import Navbar from "components/navigation/navbar";
+import Footer from "components/navigation/footer";
 
 function App() {
   return (
