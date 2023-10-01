@@ -6,7 +6,7 @@ export const PageContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   margin: 0 auto;
-  max-width: 1400px;
+  max-width: 87.5rem;
   padding: 0.625rem 2.5rem;
 `;
 

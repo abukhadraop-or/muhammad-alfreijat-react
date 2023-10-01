@@ -1,5 +1,5 @@
 /**
- * A custom hook to fetch movies from The Movie Database (TMDb) API based on various filters.
+ * A function to fetch movies from The Movie Database (TMDb) API based on various filters.
  *
  * @param {Object} options - An object containing various filtering options.
  * @param {number} options.page - The page number for paginated results (default is 1).
@@ -26,34 +26,43 @@ const fetchMovies = async ({
   releaseType = null,
   watchType = null,
 }) => {
-  const languageFilter = language ? `&with_original_language=${language}` : "";
-
-  const genresFilter =
-    genre || genre?.length === 0 ? `&with_genres=${genre.join(",")}` : "";
-  const keywordsFilter = keywords ? `&with_keywords=${keywords.join(",")}` : "";
-  const typeFilter =
-    releaseType || releaseType?.length === 0
-      ? `&with_release_type=${releaseType.join("|")}`
+  try {
+    const languageFilter = language
+      ? `&with_original_language=${language}`
       : "";
-  const watchTypeFilter =
-    watchType || watchType?.length === 0
-      ? `&with_watch_monetization_types=${watchType.join("|")}`
-      : "";
-  const countryFilter = country ? `&with_origin_country=${country}` : "";
-  const dateGteFilter = dateGte ? `&primary_release_date.gte=${dateGte}` : "";
-  const dateLteFilter = dateLte ? `&primary_release_date.lte=${dateLte}` : "";
 
-  const Uri = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&page=${page}&sort_by=${sort}${genresFilter}${countryFilter}${languageFilter}${dateGteFilter}${dateLteFilter}${keywordsFilter}${typeFilter}${watchTypeFilter}`;
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MGZmODMzN2FjNTNkOGY1MjQ0M2ExZDYzMDU3MGFmZiIsInN1YiI6IjY1MDk3NGRjMzk0YTg3MDBlMjI3YWUxOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.D9BjaxIaoMbriOZgKWo4qhmwuEVMXeMh3epbu95yFNY",
-    },
-  };
-  const response = await fetch(Uri, options);
-  return response.json();
+    const genresFilter =
+      genre || genre?.length === 0 ? `&with_genres=${genre.join(",")}` : "";
+    const keywordsFilter = keywords
+      ? `&with_keywords=${keywords.join(",")}`
+      : "";
+    const typeFilter =
+      releaseType || releaseType?.length === 0
+        ? `&with_release_type=${releaseType.join("|")}`
+        : "";
+    const watchTypeFilter =
+      watchType || watchType?.length === 0
+        ? `&with_watch_monetization_types=${watchType.join("|")}`
+        : "";
+    const countryFilter = country ? `&with_origin_country=${country}` : "";
+    const dateGteFilter = dateGte ? `&primary_release_date.gte=${dateGte}` : "";
+    const dateLteFilter = dateLte ? `&primary_release_date.lte=${dateLte}` : "";
+
+    const Uri = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&page=${page}&sort_by=${sort}${genresFilter}${countryFilter}${languageFilter}${dateGteFilter}${dateLteFilter}${keywordsFilter}${typeFilter}${watchTypeFilter}`;
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MGZmODMzN2FjNTNkOGY1MjQ0M2ExZDYzMDU3MGFmZiIsInN1YiI6IjY1MDk3NGRjMzk0YTg3MDBlMjI3YWUxOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.D9BjaxIaoMbriOZgKWo4qhmwuEVMXeMh3epbu95yFNY",
+      },
+    };
+    const response = await fetch(Uri, options);
+    return response.json();
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
 };
 
 export default fetchMovies;
