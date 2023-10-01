@@ -1,7 +1,7 @@
 import React from "react";
 import MoviesContainer from "components/movie/MoviesContainer";
 import { PageContainer, PageTitle } from "pages/styles";
-import { moviePageMainTitle } from "data/constants";
+import { MOVIE_PAGE_MAIN_TITLE } from "data/constants";
 
 /**
  * Represents a page for displaying the whole movie page.
@@ -9,7 +9,7 @@ import { moviePageMainTitle } from "data/constants";
 function MoviesPage() {
   return (
     <PageContainer>
-      <PageTitle>{moviePageMainTitle}</PageTitle>
+      <PageTitle>{MOVIE_PAGE_MAIN_TITLE}</PageTitle>
       <MoviesContainer />
     </PageContainer>
   );
