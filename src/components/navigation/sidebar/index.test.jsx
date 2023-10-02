@@ -1,8 +1,8 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable no-undef */
 import { render, screen } from "@testing-library/react";
-import Sidebar from "components/navigation/Sidebar";
-import { listItems, subList } from "data/navigationInfo";
+import Sidebar from "components/navigation/sidebar";
+import { listItems } from "data/navigationInfo";
 import { act } from "react-dom/test-utils";
 
 const { getByText } = screen;

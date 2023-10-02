@@ -1,5 +1,5 @@
 import React from "react";
-import useFetchMovies from "utils/fetchMovies";
+import fetchMovies from "utils/fetchMovies";
 import Search from "components/filter/submit-button/styles";
 import useFeatures from "hooks/useFeature";
 
@@ -11,7 +11,7 @@ function SubmitButton() {
   const { filter, setMoviesList } = useFeatures();
 
   const searchMovies = async () => {
-    const response = await useFetchMovies(filter);
+    const response = await fetchMovies(filter);
     setMoviesList(response.results);
   };
   return (

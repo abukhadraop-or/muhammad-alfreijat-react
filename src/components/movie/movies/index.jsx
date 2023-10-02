@@ -59,7 +59,7 @@ export default function Movies() {
   }, [page]);
   return (
     <>
-      {moviesList.length === 0 ? (
+      {moviesList?.length === 0 ? (
         <NoItems />
       ) : (
         <MoviesContainer>

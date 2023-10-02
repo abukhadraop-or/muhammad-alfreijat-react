@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import * as React from "react";
 import { render, screen } from "@testing-library/react";
-import MovieCard from "components/movie/MovieCard";
+import MovieCard from "components/movie/movie-card";
 
 const { getByText, getByAltText } = screen;
 describe("MovieCard component", () => {

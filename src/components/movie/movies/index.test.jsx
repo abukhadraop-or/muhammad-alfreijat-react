@@ -7,7 +7,7 @@ import {
   fireEvent,
   waitFor,
 } from "@testing-library/react";
-import Movies from "components/movie/Movies";
+import Movies from "components/movie/movies";
 
 const { getByText, getAllByAltText } = screen;
 

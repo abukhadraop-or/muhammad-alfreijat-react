@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable no-undef */
 import { render,screen } from "@testing-library/react";
-import Submenu from "components/navigation/Submenu";
+import Submenu from "components/navigation/submenu";
 
 const { getByText } = screen;
 

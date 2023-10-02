@@ -20,7 +20,7 @@ jest.mock("utils/fetchMovies", () => {
 });
 
 describe("SubmitButton component", () => {
-  it("should call fetchMovies and setMoviesList when the button is clicked", async () => {
+  it("should call fetchMovies when the button is clicked", async () => {
     const mockFilter = { someFilter: "value" };
     const mockResponse = {
       results: [
@@ -39,7 +39,7 @@ describe("SubmitButton component", () => {
       ],
     };
 
-    useFeatures.mockReturnValue({ filter: mockFilter });
+    useFeatures.mockReturnValue({ filter: mockFilter, setMoviesList: jest.fn });
     fetchMovies.mockReturnValue(mockResponse);
 
     render(<SubmitButton />);
@@ -48,8 +48,7 @@ describe("SubmitButton component", () => {
     fireEvent.click(searchButton);
 
     await act(async () => {
-      expect(useFilter).toBeCalled();
-      expect(useMovies).toBeCalled();
+      expect(useFeatures).toBeCalled();
       expect(fetchMovies).toBeCalled();
     });
   });
